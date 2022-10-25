@@ -6,9 +6,16 @@ import (
 )
 
 const (
-	mon = iota + 1
+	mon = iota
 	tue
 	wes
+)
+
+// iota 0 1 2 ...
+const (
+	Readable = 1 << iota // 0001
+	Writeable						 // 0010
+	Excuteable           // 0100
 )
 
 func TestFirstTry(t *testing.T) {
@@ -23,6 +30,10 @@ func TestFirstTry(t *testing.T) {
 		a = b
 		b = temp + a
 	}
+	c := 7 // 0111
+	t.Log(c & Readable, c & Writeable, c & Excuteable) // 1 2 4
+	d := 1 // 0001
+	t.Log(d & Readable, d & Writeable, d & Excuteable) // 1 0 0
 }
 
 func TestSwap(t *testing.T) {
